@@ -1,0 +1,16 @@
+java-sdk:
+  server-name: java-web-sdk
+  logger:
+    notify-service: mail
+    enable-notify: true
+    mail-notify:
+  gmail:
+    smtp-host: smtp.gmail.com
+    smtp-port: 587
+    mail-username:
+    mail-password:
+    smtp-auth: true
+    smtp-starttls-enable: true
+    smtp-starttls-required: true
+
+

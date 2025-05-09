@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration = sdk.mssearch.javasdk.JavaWebSDKBaseConfig
+org.springframework.boot.autoconfigure.EnableAutoConfiguration = sdk.mssearch.javasdk.JavaWebSdkAutoConfig
