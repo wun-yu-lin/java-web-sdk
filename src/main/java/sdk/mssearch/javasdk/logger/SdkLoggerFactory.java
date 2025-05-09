@@ -2,6 +2,7 @@ package sdk.mssearch.javasdk.logger;
 
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sdk.mssearch.javasdk.ApplicationContextHolder;
 import sdk.mssearch.javasdk.JavaWebSdkConfig;
 
@@ -28,6 +29,9 @@ public class SdkLoggerFactory {
             }
             case MAIL -> {
                 return new MailLoggerAdaptor(loggerName);
+            }
+            case LOCAL -> {
+                return LoggerFactory.getLogger(loggerName);
             }
 
             default -> throw new RuntimeException("Notify service not implemented yet");
