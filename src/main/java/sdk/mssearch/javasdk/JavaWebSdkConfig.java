@@ -5,9 +5,11 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.annotation.Order;
 
 @ConfigurationProperties("java-sdk")
 @Data
+@Order(Integer.MIN_VALUE)
 public class JavaWebSdkConfig {
 
     @Bean
