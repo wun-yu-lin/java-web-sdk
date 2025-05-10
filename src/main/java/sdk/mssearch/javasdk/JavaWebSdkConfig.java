@@ -56,4 +56,8 @@ public class JavaWebSdkConfig {
         private Boolean smtpStarttlsRequired;
     }
 
+    public static JavaWebSdkConfig getBean() {
+        return ApplicationContextHolder.getBean(JavaWebSdkConfig.class);
+    }
+
 }

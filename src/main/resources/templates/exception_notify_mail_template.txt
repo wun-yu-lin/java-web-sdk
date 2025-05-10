@@ -1,0 +1,15 @@
+Dear API Team,
+
+${currentTime}
+
+[Error Summary]
+Message: ${message}
+Class File: ${classFile}
+Cause: ${cause}
+
+[Server Info]
+Application: ${serverName}
+Host: ${serverIp}
+
+[Full Stack Trace]
+${fullStackTrace}

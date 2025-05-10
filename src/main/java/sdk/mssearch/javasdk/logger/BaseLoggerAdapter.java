@@ -12,4 +12,10 @@ public abstract class BaseLoggerAdapter implements LoggerAdaptor {
     protected BaseLoggerAdapter(String loggerName) {
         this.delegate = LoggerFactory.getLogger(loggerName);
     }
+
+    @Override
+    public void error(String s, Throwable throwable) {
+        delegate.error(s, throwable);
+        notifyError(s, throwable);
+    }
 }
