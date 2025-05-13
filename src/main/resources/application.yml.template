@@ -3,10 +3,7 @@ java-sdk:
   logger:
     enable-notify: true
     mail-notify:
-    notify-service-list:
-      - local
-      - mail
-      - discord
+    notify-service-list: local, mail
   gmail:
     smtp-host: smtp.gmail.com
     smtp-port: 587
