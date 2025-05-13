@@ -7,6 +7,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
 
+import java.util.Collections;
+import java.util.List;
+
+
 @ConfigurationProperties("java-sdk")
 @Data
 @Order(Integer.MIN_VALUE)
@@ -19,14 +23,14 @@ public class JavaWebSdkConfig {
 
     private String serverName;
 
-    private LoggerConfig logger;
+    public LoggerConfig logger;
 
     private GmailConfig Gmail;
 
     @Data
     public static class LoggerConfig {
 
-        private NotifyService notifyService = NotifyService.LOCAL;
+        private List<NotifyService> notifyServiceList = Collections.singletonList(NotifyService.LOCAL);
 
         private Boolean enableNotify;
 

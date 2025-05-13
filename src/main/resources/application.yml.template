@@ -1,9 +1,12 @@
 java-sdk:
   server-name: java-web-sdk
   logger:
-    notify-service: mail
     enable-notify: true
     mail-notify:
+    notify-service-list:
+      - local
+      - mail
+      - discord
   gmail:
     smtp-host: smtp.gmail.com
     smtp-port: 587
@@ -12,5 +15,3 @@ java-sdk:
     smtp-auth: true
     smtp-starttls-enable: true
     smtp-starttls-required: true
-
-
