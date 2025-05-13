@@ -1,15 +1,26 @@
-Dear API Team,
+<!DOCTYPE html>
+<html>
+<body>
+  <p>Dear API Team,</p>
 
-${currentTime}
+  <p><b>${currentTime}</b></p>
 
-[Error Summary]
-Message: ${message}
-Class File: ${classFile}
-Cause: ${cause}
+  <h3>Error Summary</h3>
+  <p>
+    <b>Message:</b> ${message}<br>
+    <b>Info File:</b> ${loggerName}<br>
+    <b>Cause:</b> ${cause}
+  </p>
 
-[Server Info]
-Application: ${serverName}
-Host: ${serverIp}
+  <h3>Server Info</h3>
+  <p>
+    <b>Application:</b> ${serverName}<br>
+    <b>Host:</b> ${serverIp}
+  </p>
 
-[Full Stack Trace]
+  <h3>Full Stack Trace</h3>
+  <pre style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
 ${fullStackTrace}
+  </pre>
+</body>
+</html>

@@ -61,7 +61,7 @@ public class GmailService extends BaseService {
     public static void main(String[] args) {
         Exception e = new Exception("test exception");
         GmailService gmailService = new GmailService();
-        String context = gmailService.getErrorNotifyContext(ExceptionNotifyInfo.from("test", e));
+        String context = gmailService.getErrorNotifyContext(ExceptionNotifyInfo.from("test", e, GmailService.class.getSimpleName()));
         Logger log = SdkLoggerFactory.getLogger(GmailService.class);
         log.info(context);
 

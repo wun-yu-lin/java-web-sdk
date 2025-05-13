@@ -18,7 +18,7 @@ public class ExceptionNotifyInfo {
     private static final Logger logger = SdkLoggerFactory.getLogger(ExceptionNotifyInfo.class);
     private String message;
     private String cause;
-    private String classFile;
+    private String loggerName;
     private Throwable exception;
     private String fullStackTrace;
     private String serverName;
@@ -27,7 +27,7 @@ public class ExceptionNotifyInfo {
 
 
 
-    public static ExceptionNotifyInfo from(String message, Throwable throwable) {
+    public static ExceptionNotifyInfo from(String message, Throwable throwable, String loggerName) {
         JavaWebSdkConfig config = JavaWebSdkConfig.getBean();
         String hostAddress;
         try {
@@ -41,9 +41,9 @@ public class ExceptionNotifyInfo {
         return ExceptionNotifyInfo.builder() //
                 .message(message) //
                 .exception(throwable) //
-                .classFile(throwable.getStackTrace()[0].getClassName())
+                .loggerName(loggerName)
                 .cause(String.valueOf(throwable.getCause())) //
-                .fullStackTrace(ExceptionUtils.getStackTrace(throwable)) //
+                .fullStackTrace(throwable == null ? StringUtils.EMPTY : ExceptionUtils.getStackTrace(throwable)) //
                 .serverName(config == null ? StringUtils.EMPTY : config.getServerName())
                 .currentTime(new Date())
                 .serverIp(hostAddress)
