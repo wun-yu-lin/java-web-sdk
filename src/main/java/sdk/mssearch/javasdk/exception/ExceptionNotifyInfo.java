@@ -37,14 +37,26 @@ public class ExceptionNotifyInfo {
             logger.warn("error getting host address", e);
         }
 
+        // 安全處理 throwable 為 null 的情況
+        String fullStackTrace = StringUtils.EMPTY;
+        String rootCause = StringUtils.EMPTY;
+        if (throwable != null) {
+            rootCause = String.valueOf(throwable.getCause());
+            fullStackTrace = ExceptionUtils.getStackTrace(throwable);
+        }
+
+        String serverName = StringUtils.EMPTY;
+        if (config != null) {
+            serverName = config.getServerName();
+        }
 
         return ExceptionNotifyInfo.builder() //
                 .message(message) //
                 .exception(throwable) //
                 .loggerName(loggerName)
-                .cause(String.valueOf(throwable.getCause())) //
-                .fullStackTrace(throwable == null ? StringUtils.EMPTY : ExceptionUtils.getStackTrace(throwable)) //
-                .serverName(config == null ? StringUtils.EMPTY : config.getServerName())
+                .cause(rootCause) //
+                .fullStackTrace(fullStackTrace) //
+                .serverName(serverName)
                 .currentTime(new Date())
                 .serverIp(hostAddress)
         .build();
