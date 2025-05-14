@@ -23,7 +23,7 @@ public class JavaWebSdkConfig {
 
     private String serverName;
 
-    public LoggerConfig logger;
+    private LoggerConfig logger;
 
     private GmailConfig Gmail;
 
