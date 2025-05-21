@@ -3,7 +3,11 @@ java-sdk:
   logger:
     enable-notify: true
     mail-notify:
-    notify-service-list: local, mail
+    notify-service-list: local, mail, discord
+  logger-elk:
+    enable-elk: true
+    logstash-host:
+    logstash-port:
   gmail:
     smtp-host: smtp.gmail.com
     smtp-port: 587

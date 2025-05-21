@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.mssearch</groupId>
     <artifactId>jdk</artifactId>
-    <version>0.0.3-RELEASE</version>
+    <version>0.0.4-RELEASE</version>
     <packaging>jar</packaging>
     <name>java-sdk</name>
     <description>java-sdk</description>
@@ -69,6 +69,13 @@
             <artifactId>annotations</artifactId>
             <version>3.0.1</version>
         </dependency>
+
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>7.4</version>
+        </dependency>
+
 
 
     </dependencies>

@@ -27,6 +27,8 @@ public class JavaWebSdkConfig {
 
     private GmailConfig Gmail;
 
+    private LoggerElkConfig loggerElk;
+
     @Data
     public static class LoggerConfig {
 
@@ -47,6 +49,13 @@ public class JavaWebSdkConfig {
             @Getter
             private final String value;
         }
+    }
+
+    @Data
+    public static class LoggerElkConfig {
+        private boolean enableElk;
+        private String logstashHost;
+        private Integer logstashPort;
     }
 
     @Data
