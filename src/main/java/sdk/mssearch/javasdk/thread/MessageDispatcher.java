@@ -15,7 +15,7 @@ public class MessageDispatcher {
     private final Logger logger = SdkLoggerFactory.getLogger(MessageDispatcher.class);
     private ThreadPoolExecutor executor;
     private final static int MAX_QUEUE_SIZE = 1024;
-    private final static int DEFAULT_THREAD_POOL_SIZE = Runtime.getRuntime().availableProcessors() / 2;
+    private final static int DEFAULT_THREAD_POOL_SIZE = 2;
     private final static int DEFAULT_THREAD_POOL_MAX = Runtime.getRuntime().availableProcessors();
     private final static TimeUnit DEFAULT_TIME_UNIT = TimeUnit.SECONDS;
     private final static int DEFAULT_KEEP_ALIVE_TIME = 60;
