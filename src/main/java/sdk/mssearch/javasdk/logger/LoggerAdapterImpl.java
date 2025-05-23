@@ -94,9 +94,15 @@ public class LoggerAdapterImpl implements LoggerAdapter {
     @Override
     public void notifyError(String message, Throwable throwable) {
         try {
+            ExceptionNotifyInfo info = ExceptionNotifyInfo.from(message, throwable, loggerName);
+
+            //ELK full stacktrace
+            delegate.error(info.getFullStackTrace(), throwable);
+
+            //notifier
             List<Notifier> notifiers = getNotifiersBySetting();
             notifiers.forEach(notifier -> {
-                notifier.notifyError(ExceptionNotifyInfo.from(message, throwable, loggerName));
+                notifier.notifyError(info);
             });
         } catch (Exception e) {
             delegate.error("notifyError error: ", e);
