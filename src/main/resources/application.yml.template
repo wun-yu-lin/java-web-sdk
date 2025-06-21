@@ -16,3 +16,5 @@ java-sdk:
     smtp-auth: true
     smtp-starttls-enable: true
     smtp-starttls-required: true
+  discord:
+    webhook-url:

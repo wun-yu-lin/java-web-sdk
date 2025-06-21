@@ -4,7 +4,7 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.encoder.EncoderBase;
 import sdk.mssearch.javasdk.ApplicationContextHolder;
 import sdk.mssearch.javasdk.JavaWebSdkConfig;
-import sdk.mssearch.javasdk.utility.JacksonUtils;
+import sdk.mssearch.javasdk.core.utility.JacksonUtils;
 
 import java.nio.charset.StandardCharsets;
 

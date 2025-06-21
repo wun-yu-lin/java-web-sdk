@@ -1,7 +1,8 @@
-package sdk.mssearch.javasdk.utility;
+package sdk.mssearch.javasdk.core.utility;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -55,6 +56,19 @@ public class JacksonUtils {
     public static <T> T jsonToObject(String json, Class<T> clazz) throws JsonProcessingException {
         try {
             return objectMapper.readValue(json, clazz);
+        } catch (JsonProcessingException e) {
+            log.warn("Error converting JSON to object", e);
+            throw e;
+        }
+    }
+
+
+    /**
+     * 將 JSON 字符串轉換成指定類型的 Java 對象
+     */
+    public static <T> T jsonToObject(String json, TypeReference<T> type) throws JsonProcessingException {
+        try {
+            return objectMapper.readValue(json, type);
         } catch (JsonProcessingException e) {
             log.warn("Error converting JSON to object", e);
             throw e;

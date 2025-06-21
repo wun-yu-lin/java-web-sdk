@@ -13,7 +13,7 @@ import sdk.mssearch.javasdk.exception.ExceptionNotifyInfo;
 import sdk.mssearch.javasdk.logger.SdkLoggerFactory;
 import sdk.mssearch.javasdk.template.TemplateConstraints;
 import sdk.mssearch.javasdk.template.TemplateLoader;
-import sdk.mssearch.javasdk.utility.JacksonUtils;
+import sdk.mssearch.javasdk.core.utility.JacksonUtils;
 
 import java.util.Map;
 
