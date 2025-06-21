@@ -2,9 +2,8 @@ package sdk.mssearch.javasdk.core;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sdk.mssearch.javasdk.core.utility.JacksonUtils;
-import sdk.mssearch.javasdk.logger.SdkLoggerFactory;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -14,9 +13,19 @@ import java.util.List;
 import java.util.Map;
 
 public class ApiRequester {
-    private static final Logger logger = SdkLoggerFactory.getLogger(ApiRequester.class);
+    private static final Logger logger = LoggerFactory.getLogger(ApiRequester.class);
     private static final HttpClient HTTP_CLIENT = HttpClient.newBuilder().build();
-    private static final String[] defaultHeader = new String[]{"Accept", "application/json"};
+    private static final String[] defaultHeader = getDefaultRestHeader();
+
+    private static String[] getDefaultRestHeader() {
+        List<String> headers = new ArrayList<>();
+        headers.add("Accept");
+        headers.add("application/json");
+
+        headers.add("Content-Type");
+        headers.add("application/json");
+        return headers.toArray(new String[0]);
+    }
 
     //prevent init
     private ApiRequester() {}
