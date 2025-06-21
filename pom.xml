@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.mssearch</groupId>
     <artifactId>jdk</artifactId>
-    <version>0.0.6-RELEASE</version>
+    <version>0.0.8-RELEASE</version>
     <packaging>jar</packaging>
     <name>java-sdk</name>
     <description>java-sdk</description>

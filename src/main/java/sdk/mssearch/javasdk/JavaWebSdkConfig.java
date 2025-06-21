@@ -29,6 +29,8 @@ public class JavaWebSdkConfig {
 
     private LoggerElkConfig loggerElk;
 
+    private DiscordConfig discord;
+
     @Data
     public static class LoggerConfig {
 
@@ -69,6 +71,12 @@ public class JavaWebSdkConfig {
         private Boolean smtpAuth;
         private Boolean smtpStarttlsEnable;
         private Boolean smtpStarttlsRequired;
+    }
+
+
+    @Data
+    public static class DiscordConfig {
+        private String webhookUrl;
     }
 
     public static JavaWebSdkConfig getBean() {
