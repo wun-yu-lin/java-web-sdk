@@ -67,7 +67,7 @@ steps:
         </servers>
         </settings>
         EOF
-        - mvn clean deploy -DskipTests
+      - mvn clean deploy
     when:
       event:
         - tag
