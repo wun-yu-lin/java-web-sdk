@@ -33,5 +33,5 @@ build/
 .vscode/
 
 ## properties
-*.properties
-*.yml
+src/main/resources/*.properties
+src/main/resources/*.yml
