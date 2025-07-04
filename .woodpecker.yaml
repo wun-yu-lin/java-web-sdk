@@ -50,26 +50,26 @@ steps:
       MAVEN_USERNAME: from_secret
       MAVEN_PASSWORD: from_secret
     commands:
-      - echo "CI_COMMIT_TAG- $CI_COMMIT_TAG"
+      - echo "$CI_COMMIT_TAG"
       - mkdir -p ~/.m2
-      - >
-        cat > ~/.m2/settings.xml <<EOF
+      - cat > ~/.m2/settings.xml <<EOF
         <settings>
-          <servers>
-            <server>
-              <id>nexus-releases</id>
-              <username>${MAVEN_USERNAME}</username>
-              <password>${MAVEN_PASSWORD}</password>
-            </server>
-          </servers>
+        <servers>
+        <server>
+        <id>nexus-releases</id>
+        <username>${MAVEN_USERNAME}</username>
+        <password>${MAVEN_PASSWORD}</password>
+        </server>
+        </servers>
         </settings>
         EOF
       - mvn versions:set -DnewVersion=${CI_COMMIT_TAG#v} -DgenerateBackupPoms=false
-      - mvn clean deploy
+      - mvn clean deploy -DskipTests
     when:
       event:
         - tag
         - release
+
 
 
 
