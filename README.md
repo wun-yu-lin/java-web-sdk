@@ -35,7 +35,7 @@ Use Maven to build and install the SDK into your local Maven repository:
 ./mvn clean install
 ```
 
-After the build, the JAR will be installed into your local Maven repository (`~/.m2/repository/org/mssearch/jdk/`).
+After the build, the JAR will be installed into your local Maven repository (`~/.m2/repository/org/mssearch/java-sdk/`).
 
 ### 2.1.1 Add Dependency to Your Project
 Add the following dependency to your project's `pom.xml`. Make sure the version matches the one you just built:
@@ -43,7 +43,7 @@ Add the following dependency to your project's `pom.xml`. Make sure the version 
 ```xml
 <dependency>
     <groupId>org.mssearch</groupId>
-    <artifactId>jdk</artifactId>
+    <artifactId>java-sdk</artifactId>
     <version>0.0.0-RELEASE</version>
 </dependency>
 ```
@@ -53,15 +53,15 @@ You can also use the SDK by downloading the JAR file from the release page.
 ```
 cd to your project path
 mkdir lib
-paste released sdk.jar file to lib/
+paste released java-sdk-*.jar file to lib/
 ```
 Add the following dependency to your project's `pom.xml`. Make sure the version matches the one you just built:
 ```xml
 <dependency>
     <groupId>org.mssearch</groupId>
-    <artifactId>jdk</artifactId>
+    <artifactId>java-sdk</artifactId>
     <scope>system</scope>
-    <systemPath>${project.basedir}/lib/jdk-0.0.0-RELEASE.jar</systemPath>
+    <systemPath>${project.basedir}/lib/java-sdk-0.0.0-RELEASE.jar</systemPath>
 </dependency>
 ```
 
