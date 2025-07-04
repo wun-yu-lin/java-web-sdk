@@ -41,7 +41,18 @@ steps:
 #    commands:
 #      - mvn test
 
-# 設定通知，discord 作為通知工具
+  release:
+    image: maven:3.8.1-openjdk-17
+    commands:
+      - echo "CI_COMMIT_TAG - $CI_COMMIT_TAG"
+      - mvn versions:set -DnewVersion=${CI_COMMIT_TAG#v} -DgenerateBackupPoms=false
+      - mvn clean deploy
+    when:
+      event:
+        - tag
+        - release
+
+  # 設定通知，discord 作為通知工具
   notify:
     image: appleboy/drone-discord
     settings:
@@ -55,6 +66,8 @@ steps:
     when:
       event:
         - pull_request
+        - tag
+        - release
       status:
         - failure
         - success
