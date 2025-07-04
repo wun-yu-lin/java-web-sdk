@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <p>Dear API Team,</p>
+
+  <p><b>${currentTime}</b></p>
+
+  <h3>Error Summary</h3>
+  <p>
+    <b>Message:</b> ${message}<br>
+    <b>Info File:</b> ${loggerName}<br>
+    <b>Cause:</b> ${cause}
+  </p>
+
+  <h3>Server Info</h3>
+  <p>
+    <b>Application:</b> ${serverName}<br>
+    <b>Host:</b> ${serverIp}
+  </p>
+
+  <h3>Full Stack Trace</h3>
+  <pre style="background-color: #f4f4f4; padding: 10px; border: 1px solid #ccc;">
+${fullStackTrace}
+  </pre>
+</body>
+</html>

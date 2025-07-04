@@ -1,0 +1,20 @@
+java-sdk:
+  server-name: java-web-sdk
+  logger:
+    enable-notify: true
+    mail-notify:
+    notify-service-list: local, mail, discord
+  logger-elk:
+    enable-elk: true
+    logstash-host:
+    logstash-port:
+  gmail:
+    smtp-host: smtp.gmail.com
+    smtp-port: 587
+    mail-username:
+    mail-password:
+    smtp-auth: true
+    smtp-starttls-enable: true
+    smtp-starttls-required: true
+  discord:
+    webhook-url:
