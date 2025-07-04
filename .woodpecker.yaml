@@ -47,29 +47,31 @@ steps:
   release:
     image: maven:3.8.1-openjdk-17
     environment:
-      maven_username: from_secret
-      maven_password: from_secret
+      maven_username:
+        from_secret: maven_username
+      maven_password:
+        from_secret: maven_password
     commands:
-      - echo "🧪 Build triggered by Git tag- $CI_COMMIT_TAG"
+      - echo "🧪 Build triggered by Git tag - $CI_COMMIT_TAG"
       - mvn versions:set -DnewVersion=${CI_COMMIT_TAG#v} -DgenerateBackupPoms=false
       - mkdir -p ~/.m2
       - |
         cat > ~/.m2/settings.xml <<EOF
         <settings>
-          <servers>
-            <server>
-              <id>jdk</id>
-              <username>${maven_username}</username>
-              <password>${maven_password}</password>
-            </server>
-          </servers>
+        <servers>
+        <server>
+        <id>jdk</id>
+        <username>${maven_username}</username>
+        <password>${maven_password}</password>
+        </server>
+        </servers>
         </settings>
         EOF
-
-      - mvn clean deploy -DskipTests
+        - mvn clean deploy -DskipTests
     when:
-      event: tag
-
+      event:
+        - tag
+        - release
 
 
 
