@@ -52,7 +52,8 @@ steps:
     commands:
       - echo "CI_COMMIT_TAG- $CI_COMMIT_TAG"
       - mkdir -p ~/.m2
-      - cat > ~/.m2/settings.xml <<EOF
+      - >
+        cat > ~/.m2/settings.xml <<EOF
         <settings>
           <servers>
             <server>
@@ -69,6 +70,7 @@ steps:
       event:
         - tag
         - release
+
 
 
   # 設定通知，discord 作為通知工具
