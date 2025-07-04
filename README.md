@@ -95,9 +95,7 @@ java-sdk:
   logger:
     enable-notify: true
     mail-notify: your-email@example.com
-    notify-service-list:
-      - MAIL
-      - DISCORD
+    notify-service-list: local, mail, discord
   logger-elk:
     enable-elk: true
     logstash-host: localhost
