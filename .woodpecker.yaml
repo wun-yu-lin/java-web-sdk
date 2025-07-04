@@ -6,8 +6,6 @@ steps:
       - echo $${WOODPECKER_NOTIFY_DISCORD_ID}
       - echo $${WOODPECKER_NOTIFY_DISCORD_TOKEN}
     secrets: [WOODPECKER_NOTIFY_DISCORD_ID, WOODPECKER_NOTIFY_DISCORD_TOKEN]
-    when:
-      event: pull_request
 
   compile:
     image: maven:3.8.1-openjdk-17
@@ -43,6 +41,9 @@ steps:
 
   release:
     image: maven:3.8.1-openjdk-17
+    environment:
+      MAVEN_USERNAME: from_secret
+      MAVEN_PASSWORD: from_secret
     commands:
       - echo "CI_COMMIT_TAG - $CI_COMMIT_TAG"
       - mvn versions:set -DnewVersion=${CI_COMMIT_TAG#v} -DgenerateBackupPoms=false
