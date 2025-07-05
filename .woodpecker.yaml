@@ -9,7 +9,6 @@ steps:
     when:
       event:
         - pull_request
-        - tag
         - release
   compile:
     image: maven:3.8.1-openjdk-17
@@ -59,7 +58,6 @@ steps:
       - mvn clean deploy
     when:
       event:
-        - tag
         - release
 
 
@@ -78,7 +76,6 @@ steps:
     when:
       event:
         - pull_request
-        - tag
         - release
       status:
         - failure
