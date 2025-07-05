@@ -53,10 +53,11 @@ steps:
         from_secret: nexus_password
     commands:
       - echo "🧪 Build triggered by Git tag - $CI_COMMIT_TAG"
-      - echo "$maven_username"
-      - echo "$nexus_password"
-      - echo "$NEXUS_USERNAME"
-      - echo "$NEXUS_PASSWORD"
+      - echo "nexus_username=[$nexus_username]"
+      - echo "nexus_password=[$nexus_password]"
+      - echo "NEXUS_USERNAME=[$NEXUS_USERNAME]"
+      - echo "NEXUS_PASSWORD=[$NEXUS_PASSWORD]"s
+
       - mvn versions:set -DnewVersion=${CI_COMMIT_TAG#v} -DgenerateBackupPoms=false
       - mkdir -p ~/.m2
       - echo "<settings><servers><server><id>jdk</id><username>${NEXUS_USERNAME}</username><password>${NEXUS_PASSWORD}</password></server></servers></settings>" > ~/.m2/settings.xml
