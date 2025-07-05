@@ -60,8 +60,6 @@ steps:
       event:
         - release
 
-
-
   # 設定通知，discord 作為通知工具
   notify:
     image: appleboy/drone-discord
