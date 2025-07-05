@@ -46,12 +46,13 @@ steps:
 
   release:
     image: maven:3.8.1-openjdk-17
-    secrets:
-      - source: maven_username
-        target: NEXUS_USERNAME
-      - source: maven_password
-        target: NEXUS_PASSWORD
+    environment:
+      NEXUS_USERNAME:
+        from_secret: maven_username
+      NEXUS_PASSWORD:
+        from_secret: maven_password
     commands:
+      - echo "$NEXUS_USERNAME"
       - echo "🧪 Build triggered by Git tag - $CI_COMMIT_TAG"
       - mvn versions:set -DnewVersion=${CI_COMMIT_TAG#v} -DgenerateBackupPoms=false
       - mvn clean deploy
