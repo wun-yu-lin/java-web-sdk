@@ -21,6 +21,12 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Extract version from Git tag
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
+      - name: Update pom.xml version
+        run: mvn versions:set -DnewVersion=${VERSION} -DgenerateBackupPoms=false
+
       - name: Build with Maven
         run: mvn clean package
 
