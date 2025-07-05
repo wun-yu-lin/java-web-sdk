@@ -3,15 +3,10 @@ steps:
     image: maven:3.8.1-openjdk-17
     commands:
       - echo "start run the build step "
-      - echo $${WOODPECKER_NOTIFY_DISCORD_ID}
-      - echo $${WOODPECKER_NOTIFY_DISCORD_TOKEN}
-    secrets: [WOODPECKER_NOTIFY_DISCORD_ID, WOODPECKER_NOTIFY_DISCORD_TOKEN]
     when:
       event:
         - pull_request
-        - tag
         - release
-
   compile:
     image: maven:3.8.1-openjdk-17
     commands:
@@ -48,19 +43,19 @@ steps:
     image: maven:3.8.1-openjdk-17
     environment:
       NEXUS_USERNAME:
-        from_secret: maven_username
+        from_secret: nexus_username
       NEXUS_PASSWORD:
-        from_secret: maven_password
+        from_secret: nexus_password
     commands:
-      - echo "$NEXUS_USERNAME"
       - echo "🧪 Build triggered by Git tag - $CI_COMMIT_TAG"
+      - echo "NEXUS_USERNAME=[$NEXUS_USERNAME]"
       - mvn versions:set -DnewVersion=${CI_COMMIT_TAG#v} -DgenerateBackupPoms=false
+      - mkdir -p ~/.m2
+      - echo "<settings><servers><server><id>jdk</id><username>$NEXUS_USERNAME</username><password>$NEXUS_PASSWORD</password></server></servers></settings>" > ~/.m2/settings.xml
       - mvn clean deploy
     when:
       event:
-        - tag
         - release
-
 
   # 設定通知，discord 作為通知工具
   notify:
@@ -76,7 +71,6 @@ steps:
     when:
       event:
         - pull_request
-        - tag
         - release
       status:
         - failure
