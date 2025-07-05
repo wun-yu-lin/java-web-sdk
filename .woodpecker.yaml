@@ -54,12 +54,9 @@ steps:
     commands:
       - echo "🧪 Build triggered by Git tag - $CI_COMMIT_TAG"
       - echo "NEXUS_USERNAME=[$NEXUS_USERNAME]"
-      - echo "NEXUS_PASSWORD=[$NEXUS_PASSWORD]"
-
       - mvn versions:set -DnewVersion=${CI_COMMIT_TAG#v} -DgenerateBackupPoms=false
       - mkdir -p ~/.m2
       - echo "<settings><servers><server><id>jdk</id><username>$NEXUS_USERNAME</username><password>$NEXUS_PASSWORD</password></server></servers></settings>" > ~/.m2/settings.xml
-      - cat ~/.m2/settings.xml
       - mvn clean deploy
     when:
       event:
