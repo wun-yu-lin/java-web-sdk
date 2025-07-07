@@ -118,7 +118,7 @@
     <distributionManagement>
         <repository>
             <id>jdk</id>
-            <url>http://service.ms-search.us:8081/repository/jdk/</url>
+            <url>https://nexus.service.ms-search.us/repository/jdk/</url>
         </repository>
     </distributionManagement>
 
