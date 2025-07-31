@@ -3,14 +3,12 @@ package sdk.mssearch.javasdk.notify;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.SneakyThrows;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import sdk.mssearch.javasdk.core.BaseService;
 import sdk.mssearch.javasdk.exception.ExceptionNotifyInfo;
-import sdk.mssearch.javasdk.logger.SdkLoggerFactory;
 import sdk.mssearch.javasdk.template.TemplateConstraints;
 import sdk.mssearch.javasdk.template.TemplateLoader;
 import sdk.mssearch.javasdk.core.utility.JacksonUtils;
@@ -55,15 +53,5 @@ public class GmailService extends BaseService {
             throw e;
         }
         return TemplateLoader.renderTemplate(template, map);
-    }
-
-    //test
-    public static void main(String[] args) {
-        Exception e = new Exception("test exception");
-        GmailService gmailService = new GmailService();
-        String context = gmailService.getErrorNotifyContext(ExceptionNotifyInfo.from("test", e, GmailService.class.getSimpleName()));
-        Logger log = SdkLoggerFactory.getLogger(GmailService.class);
-        log.info(context);
-
     }
 }
