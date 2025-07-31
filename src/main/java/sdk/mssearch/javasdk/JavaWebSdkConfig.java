@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @ConfigurationProperties("java-sdk")
-@Getter
+@Data
 @Order(Integer.MIN_VALUE)
 public class JavaWebSdkConfig {
 
