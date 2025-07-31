@@ -1,7 +1,5 @@
 package sdk.mssearch.javasdk.notify;
 
-import sdk.mssearch.javasdk.ApplicationContextHolder;
-import sdk.mssearch.javasdk.JavaWebSdkConfig;
 import sdk.mssearch.javasdk.JavaWebSdkConfig.LoggerConfig.NotifyService;
 import sdk.mssearch.javasdk.exception.ExceptionNotifyInfo;
 

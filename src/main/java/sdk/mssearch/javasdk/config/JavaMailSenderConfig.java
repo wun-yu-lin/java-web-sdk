@@ -1,11 +1,11 @@
 package sdk.mssearch.javasdk.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import sdk.mssearch.javasdk.ApplicationContextHolder;
 import sdk.mssearch.javasdk.JavaWebSdkConfig;
 
 import java.util.Properties;
@@ -13,11 +13,14 @@ import java.util.Properties;
 @Configuration
 public class JavaMailSenderConfig {
 
+    @Autowired
+    JavaWebSdkConfig javaWebSdkConfig;
+
     @Bean
     @Primary
     public JavaMailSender javaMailSender() {
 
-        JavaWebSdkConfig.GmailConfig config = ApplicationContextHolder.getBean(JavaWebSdkConfig.class).getGmail();
+        JavaWebSdkConfig.GmailConfig config = javaWebSdkConfig.getGmail();
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
 
         mailSender.setHost(config.getSmtpHost());
