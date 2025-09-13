@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.CollectionUtils;
 import sdk.mssearch.javasdk.JavaWebSdkConfig;
 
+import java.util.List;
 import java.util.ServiceLoader;
 
 @Configuration
@@ -20,6 +22,9 @@ public class LoggerElkConfigLoader {
 
     @Autowired
     JavaWebSdkConfig javaWebSdkConfig;
+
+    @Autowired(required = false)
+    private List<LogbackCustomizer> customizers;
 
     @PostConstruct
     public void configureLogback() {
@@ -38,8 +43,11 @@ public class LoggerElkConfigLoader {
 
         context.getLogger(Logger.ROOT_LOGGER_NAME).addAppender(appender);
 
+        if (CollectionUtils.isEmpty(customizers)) {
+            return;
+        }
         //extend
-        for (LogbackCustomizer customizer : ServiceLoader.load(LogbackCustomizer.class)) {
+        for (LogbackCustomizer customizer : customizers) {
             customizer.customize(context);
         }
     }
